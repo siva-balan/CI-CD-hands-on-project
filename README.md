@@ -1,13 +1,13 @@
-WEBSITE
+# WEBSITE
 
 This is a sample project created to test automated CI/CD pipeline.
 
-Used Tools:
+### Used Tools:
 * Docker
 * Jenkins (Run Inside Docker)
 * Gitlab 
 
-High level overview of the process followed:
+### High level overview of the process followed:
 * Install Docker desktop.
 * Build jenkins image using basic jenkins image and update the CA cert file.
 * Run Jenkins image and install the required plugins.
