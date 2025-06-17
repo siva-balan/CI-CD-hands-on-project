@@ -18,5 +18,5 @@ This is a sample project created to test automated CI/CD pipeline.
     * other files such as scripts needed to run the pipeline
 * Initalize git in local and push the code to feature branch/main branch.
 * If pushed to feature branch, open a merge request, and merge it if no conflicts.
-* Setup Jenkins pipeline to connect with the git repo and setup triggers to build job when merge requests in approved in gitlab.
+* Setup Jenkins pipeline to connect with the git repo and setup triggers to run jenkins job by polling SCM according to the required timeframe.
 
