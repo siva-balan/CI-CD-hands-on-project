@@ -1,5 +1,5 @@
 #!/bin/bash
-url="http://localhost:80/"
+url="http://localhost/"
 timeout=30
 interval=2
 elapsed=0
