@@ -13,8 +13,8 @@ pipeline {
         }
         stage('Wait') {
             steps {
-                echo 'Waiting 10 seconds...'
-                sleep time: 10, unit: 'SECONDS'
+                echo 'Waiting 5 seconds...'
+                sleep time: 5, unit: 'SECONDS'
             }
         }
         stage('Test Application status'){
