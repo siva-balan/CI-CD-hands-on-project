@@ -11,6 +11,10 @@ steps{
 sh './deploy.sh'
 }
 }
+stage('Test Application status'){
+steps{
+sh './test.sh'
+}
 }
 }
 
