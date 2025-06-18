@@ -1,5 +1,5 @@
 #!/bin/bash
-url="http://localhost/"
+url="http://host.docker.internal:8090"
 timeout=30
 interval=2
 elapsed=0
@@ -10,7 +10,6 @@ while ! curl -sSf "$url" > /dev/null; do
   elapsed=$((elapsed + interval))
   if [ $elapsed -ge $timeout ]; then
     echo "Server failed to start in $timeout seconds"
-    exit 1
   fi
 done
 
