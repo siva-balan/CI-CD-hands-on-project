@@ -1,13 +1,20 @@
 #!/bin/bash
+url="http://localhost:8090/"
+timeout=30
+interval=2
+elapsed=0
 
-curl -sSf http://localhost:8090/ > /dev/null
-status=$?
+while ! curl -sSf "$url" > /dev/null; do
+  echo "Waiting for server..."
+  sleep $interval
+  elapsed=$((elapsed + interval))
+  if [ $elapsed -ge $timeout ]; then
+    echo "Server failed to start in $timeout seconds"
+    exit 1
+  fi
+done
 
-if [ "$status" -eq 0 ]; then
-  echo "Server is up"
-else
-  echo "Server is down (status=$status)"
-fi
+echo "Server is up"
 
 
 
