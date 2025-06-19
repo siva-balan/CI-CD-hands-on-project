@@ -1,22 +1,44 @@
-# WEBSITE
+# WEBSITE CI/CD PIPELINE
 
 This is a sample project created to test automated CI/CD pipeline.
 
 ### Used Tools:
 * Docker
-* Jenkins (Run Inside Docker)
+* Jenkins (Running inside Docker)
 * Gitlab 
 
-### High level overview of the process followed:
-* Install Docker desktop.
-* Build jenkins image using basic jenkins image and update the CA cert file.
-* Run Jenkins image and install the required plugins.
-* In Ubuntu, create the required files such as
-    * Application code (HTML code)
-    * Dockerfile(to run the website)
-    * Jenkinsfile (to define the pipeline)
-    * other files such as scripts needed to run the pipeline
-* Initalize git in local and push the code to feature branch/main branch.
-* If pushed to feature branch, open a merge request, and merge it if no conflicts.
-* Setup Jenkins pipeline to connect with the git repo and setup triggers to run jenkins job by polling SCM according to the required timeframe.
+### High level Workflow:
+1. **Install Docker Desktop**   
+   Ensure Docker is installed and running on your system.
 
+2. **Build the Custom Jenkins Image**  
+   Use the base Jenkins image and include your corporate root CA certificate.
+
+   `docker build -t <image-name> .`
+
+3. **Run Jenkins in a Conatiner**   
+    Start he Jenkins container with port mapping:
+
+    `Docker run --name <containername> -p 8080:8080 <imagename>`
+
+4. **Create the web server project**    
+    In Ubuntu, create and update the required files to run the web server such as
+        * Application code (HTML code)
+        * Dockerfile(to run the website)
+        * Jenkinsfile (to define the pipeline)
+        * Other files such as scripts needed to run the pipeline
+
+5. **Push to Gitlab for version control**   
+    * Initialize git in local and push the code to feature/main branch.
+    * If pushed to feature branch, open a merge request.
+    * If merge conflict arises then go to the conflict and manually resolve the conflict and merge it.
+
+6. **Setup Jenkins Pipeline**   
+    * In Jenkins, create a new pipeline job.
+    * Setup Jenkins pipeline to connect with the git repo.
+    * Setup triggers to run jenkins job by using 'polling SCM'.
+
+### Note:   
+
+* Since, we are using Jenkins inside a docker container, Jenkins will not be able to use the host Docker Daemon to create a container if the job requires it.
+* So, we will create a docker container using `jenkins/inbound-agent:latest` image which will talk with the host Docker Daemon to create containers.
