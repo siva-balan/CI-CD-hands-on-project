@@ -11,12 +11,6 @@ pipeline {
                 sh './deploy.sh'
             }
         }
-        stage('Wait') {
-            steps {
-                echo 'Waiting 5 seconds...'
-                sleep time: 5, unit: 'SECONDS'
-            }
-        }
         stage('Test Application status'){
             steps{
                 sh './test.sh'
