@@ -1,6 +1,6 @@
 #!/bin/bash
 container=fix_log_analyzer
-image=fix_log_analyzer
+Image_name=sivabalansp/fix_log_analyzer:$BUILD_NUMBER
 
 echo "Stopping container: $container"
 docker stop $container 2>/dev/null
