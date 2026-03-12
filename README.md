@@ -5,7 +5,7 @@ This is a sample project created to test automated CI/CD pipeline.
 ### Used Tools:
 * Docker
 * Jenkins (Running inside Docker)
-* Gitlab 
+* Github
 
 ### High level Workflow:
 1. **Install Docker Desktop**   
@@ -23,12 +23,12 @@ This is a sample project created to test automated CI/CD pipeline.
 
 4. **Create the web server project**    
     In Ubuntu, create and update the required files to run the web server such as
-        * Application code (HTML code)
+        * Application code (python code)
         * Dockerfile(to run the website)
         * Jenkinsfile (to define the pipeline)
         * Other files such as scripts needed to run the pipeline
 
-5. **Push to Gitlab for version control**   
+5. **Push to Github for version control**   
     * Initialize git in local and push the code to feature/main branch.
     * If pushed to feature branch, open a merge request.
     * If merge conflict arises then go to the conflict and manually resolve the conflict and merge it.
